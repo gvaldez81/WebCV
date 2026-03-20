@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV — Gerardo Valdez Tovar</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:     #1a1f2e;
+  --ink2:    #3d4458;
+  --muted:   #6b7280;
+  --accent:  #ea6c00;
+  --accent2: #9a3e00;
+  --line:    #e2e8f0;
+  --bg:      #ffffff;
+  --sidebar: #fff8f3;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #e8edf2;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── Layout ── */
+.page {
+  width: 8.5in;
+  margin: 20px auto;
+  background: var(--bg);
+  display: grid;
+  grid-template-columns: 2.6in 1fr;
+  box-shadow: 0 8px 40px rgba(0,0,0,.15);
+}
+
+@media print {
+  @page { size: letter; margin: 0; }
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; width: 100%; }
+  .tl-item, .entry, .m-section, .edu-item { page-break-inside: avoid; }
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--line);
+  border-top: 4px solid #f97316;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(14,116,144,.25);
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.name-block { text-align: center; }
+.name-block .name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.name-block .title {
+  font-size: 10.5px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+.s-section { display: flex; flex-direction: column; gap: 8px; }
+.s-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent2);
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: 2px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--ink2);
+  word-break: break-word;
+}
+.contact-item .icon {
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.skill-row { margin-bottom: 6px; }
+.skill-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.skill-bar {
+  height: 4px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9a3e00, #f97316);
+  border-radius: 99px;
+}
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag {
+  background: var(--line);
+  color: var(--ink2);
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  font-weight: 500;
+}
+
+.lang-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--ink2);
+  align-items: center;
+}
+.lang-dots {
+  display: flex;
+  gap: 3px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.dot.on { background: var(--accent); }
+
+/* ── Main ── */
+.main {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.header-row {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 14px;
+}
+.header-row h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.header-row .subtitle {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+.summary {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.m-section { display: flex; flex-direction: column; gap: 12px; }
+.m-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent2);
+  padding-bottom: 4px;
+  border-bottom: 1.5px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.entry { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+.entry-top { grid-column: 1; }
+.entry-date {
+  grid-column: 2;
+  text-align: right;
+  font-size: 10.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.entry-org {
+  font-size: 10.5px;
+  color: var(--muted);
+  margin-bottom: 1px;
+}
+.entry-role {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.entry-detail {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--ink2);
+  margin-top: 2px;
+  line-height: 1.55;
+}
+.entry-detail ul {
+  padding-left: 14px;
+  margin: 0;
+}
+.entry-detail li { margin-bottom: 2px; }
+
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.badge {
+  background: #e0f2fe;
+  color: var(--accent2);
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.edu-item { margin-bottom: 8px; }
+.edu-title { font-size: 12px; font-weight: 600; color: var(--ink); }
+.edu-inst { font-size: 11px; color: var(--muted); }
+
+.logros-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.logro {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--ink2);
+}
+.logro::before {
+  content: "▸";
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Print ── */
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; width: 100%; min-height: 100vh; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+
+    <div class="avatar-wrap">
+      <div class="avatar"><img src="profile.jpeg" alt="Gerardo Valdez Tovar"></div>
+      <div class="name-block">
+        <div class="name">Gerardo Valdez Tovar</div>
+        <div class="title">L.C.A. · Cédula 5764891</div>
+      </div>
+    </div>
+
+    <!-- Contacto -->
+    <div class="s-section">
+      <div class="s-title">Contacto</div>
+      <div class="contact-item"><span class="icon">📍</span> Ciudad Victoria, Tamaulipas</div>
+      <div class="contact-item"><span class="icon">📱</span> 834 144 5807</div>
+      <div class="contact-item"><span class="icon">✉️</span> gvaldez@gmail.com</div>
+      <div class="contact-item"><span class="icon">🛂</span> VISA B1 · Pasaporte vigente</div>
+    </div>
+
+    <!-- Habilidades técnicas -->
+    <div class="s-section">
+      <div class="s-title">Stack Técnico</div>
+      <div class="skill-row">
+        <div class="skill-name">Java · PL/SQL · PL/pgSQL</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">JavaScript · Python</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">TypeScript · React</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">PostgreSQL · Oracle · MongoDB</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">HL7 v2.x · DICOM</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Docker · Linux · CI/CD</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">GIS (ArcGIS · ERDAS)</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+      </div>
+    </div>
+
+    <!-- Especialidades -->
+    <div class="s-section">
+      <div class="s-title">Especialidades</div>
+      <div class="tag-cloud">
+        <span class="tag">Healthcare IT</span>
+        <span class="tag">Nómina Gubernamental</span>
+        <span class="tag">Arquitectura de Software</span>
+        <span class="tag">Gestión de Proyectos</span>
+        <span class="tag">Interoperabilidad</span>
+        <span class="tag">Big Data</span>
+        <span class="tag">Política Pública</span>
+        <span class="tag">Comunicación Digital</span>
+      </div>
+    </div>
+
+    <!-- Idiomas -->
+    <div class="s-section">
+      <div class="s-title">Idiomas</div>
+      <div class="lang-item">
+        <span>Español</span>
+        <div class="lang-dots">
+          <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div>
+        </div>
+      </div>
+      <div class="lang-item">
+        <span>Inglés B2</span>
+        <div class="lang-dots">
+          <div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="lang-item">
+        <span>Francés A2</span>
+        <div class="lang-dots">
+          <div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="lang-item">
+        <span>Alemán A1</span>
+        <div class="lang-dots">
+          <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <main class="main">
+
+    <div class="header-row">
+      <h1>Gerardo Valdez Tovar</h1>
+      <div class="subtitle">CTO · Arquitecto de Software · Servidor Público · Maestrante en Política y Gestión Pública</div>
+      <p class="summary">
+        Profesional con más de 20 años de trayectoria en el diseño e implementación de sistemas de misión crítica para el sector salud, gobierno y empresa privada a nivel nacional e internacional. Complemento técnico con una sólida carrera en servicio público: regidor propietario electo, diputado suplente en funciones y coordinador de campañas en procesos electorales federales y locales. Actualmente al frente de Softbot como CTO y cursando estudios de posgrado en Política y Gestión Pública.
+      </p>
+    </div>
+
+    <!-- Logros destacados -->
+    <div class="m-section">
+      <div class="m-title">Logros Destacados</div>
+      <div class="logros-list">
+        <div class="logro">1° Lugar — Diseño e Implementación Hospital Digital · SSA World Center CDMX (2010)</div>
+        <div class="logro">Sistema de Nómina para SEP Tamaulipas: 32,000 empleados · 65,000 plazas · En producción desde 2008</div>
+        <div class="logro">Sistema de Reclamos Médicos PEMEX — Cobertura en 90 ciudades (eCareSoft)</div>
+        <div class="logro">Implementación HIS en Hospital Central Militar CDMX y HRAE Ciudad Victoria</div>
+        <div class="logro">Representante Estudiantil Consejo Universitario UAT · Presidente Consejo Estudiantil UAMCAV (2001–2003)</div>
+        <div class="logro">Regidor Propietario Cabildo Victoria 2018–2021 · Diputado Suplente Legislatura 65</div>
+      </div>
+    </div>
+
+    <!-- Experiencia privada -->
+    <div class="m-section">
+      <div class="m-title">Trayectoria — Iniciativa Privada</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Softbot SA de CV</div>
+          <div class="entry-role">Chief Technology Officer (CTO)</div>
+        </div>
+        <div class="entry-date">2024 – Presente</div>
+        <div class="entry-detail">Dirección tecnológica integral. Desarrollo de productos de software para la iniciativa privada en ámbitos administrativos y de toma de decisiones. Automatización de procesos audiovisuales para producción y distribución de contenido.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Semitki SA de CV</div>
+          <div class="entry-role">Arquitecto de Software / CTO</div>
+        </div>
+        <div class="entry-date">2016 – 2019</div>
+        <div class="entry-detail">Diseño y desarrollo de plataforma de administración de redes sociales para campañas electorales (Backbone.js, MariaDB, Docker, Puppet). Sistema de cómputo electoral en tiempo real.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">eCareSoft LLC / eCareSoft México SA de CV</div>
+          <div class="entry-role">Arquitecto de Software · Gerente de Proyecto · Líder de Desarrollo</div>
+        </div>
+        <div class="entry-date">2010 – 2016</div>
+        <div class="entry-detail">
+          <ul>
+            <li>Sistema hospitalario Mahmood Group Hospitals (USA) — Meaningful Use certification</li>
+            <li>Módulo HL7 para interoperabilidad HIS/LIS/RIS/BBS con Oracle 10g/11g</li>
+            <li>Sistema de reclamos médicos PEMEX — 90 ciudades</li>
+            <li>Módulos para Obamacare / PPACA (consultorios USA)</li>
+          </ul>
+        </div>
+        <div class="badge-row">
+          <span class="badge">Java</span><span class="badge">Oracle PL/SQL</span><span class="badge">HL7 v2.x</span><span class="badge">USA · LATAM</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Expert Sistemas Computacionales SA de CV</div>
+          <div class="entry-role">Gerente Zona Noreste · Coordinador · Líder de Desarrollo</div>
+        </div>
+        <div class="entry-date">2007 – 2010</div>
+        <div class="entry-detail">Liderazgo de equipos de hasta 15 personas. Nómina SEP Tamaulipas y SS Tamaulipas en producción. Módulos HIS (MedSys), interoperabilidad HL7/DICOM.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">SAGARPA Delegación Tamaulipas</div>
+          <div class="entry-role">Director de Informática · Desarrollo de Sistemas</div>
+        </div>
+        <div class="entry-date">2004 – 2010</div>
+        <div class="entry-detail">Infraestructura TI para 158 equipos, PBX Nortel, VPN Cisco. Sistema Diesel Agropecuario — elevó al estado del penúltimo al 2° lugar nacional en operación. Certificación ISO 9001:2000.</div>
+      </div>
+
+    </div>
+
+    <!-- Servicio público -->
+    <div class="m-section">
+      <div class="m-title">Trayectoria — Servicio Público y Político</div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Movimiento Ciudadano Tamaulipas</div>
+          <div class="entry-role">Coordinador Municipal</div>
+        </div>
+        <div class="entry-date">Jun 2024 – Presente</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Congreso del Estado de Tamaulipas — Legislatura 65</div>
+          <div class="entry-role">Diputado Suplente</div>
+        </div>
+        <div class="entry-date">Sep 2021 – Ago 2024</div>
+        <div class="entry-detail" style="display:flex;align-items:baseline;gap:6px;">
+          <span style="color:var(--accent);font-size:10px;font-weight:700;">↳ En Funciones</span>
+          <span style="color:var(--muted);font-size:10.5px;">Jun – Jul 2024</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Gobierno Municipal de Victoria</div>
+          <div class="entry-role">Regidor Propietario — Cabildo 2018–2021</div>
+        </div>
+        <div class="entry-date">Oct 2018 – Sep 2021</div>
+        <div class="entry-detail">Representante electo. Comisión de mercados y reglamentos.</div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-org">Gobierno Municipal de Victoria</div>
+          <div class="entry-role">Regidor Suplente — Cabildo 2016–2018</div>
+        </div>
+        <div class="entry-date">Oct 2016 – Sep 2018</div>
+        <div class="entry-detail" style="display:flex;align-items:baseline;gap:6px;">
+          <span style="color:var(--accent);font-size:10px;font-weight:700;">↳ En Funciones de Propietario</span>
+          <span style="color:var(--muted);font-size:10.5px;">Feb – Sep 2018</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Educación -->
+    <div class="m-section">
+      <div class="m-title">Educación</div>
+      <div class="edu-item">
+        <div class="edu-title">Maestría en Política y Gestión Pública <span style="font-weight:400;font-size:11px;color:var(--accent)">— En curso</span></div>
+        <div class="edu-inst">2026 · Actualmente cursando 2ª materia</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Licenciatura en Computación Administrativa</div>
+        <div class="edu-inst">1999–2003 · Universidad Autónoma de Tamaulipas — UAMCAV</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Técnico en Programación / Bachillerato</div>
+        <div class="edu-inst">1996–1999 · CBTis No. 119</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Certificaciones relevantes</div>
+        <div class="edu-inst">Administración de Proyectos (2018) · HL7 v2.x (2009) · Diplomado Calidad ISO 9001 (2006) · Cisco CCNA parcial</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>
